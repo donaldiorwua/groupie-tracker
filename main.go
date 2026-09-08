@@ -1,19 +1,20 @@
 package main
 
-
-import(
+import (
 	"fmt"
-	"groupie-tracker/handlers"
+	"groupie-tracker/webhandlers"
+	"net/http"
 )
 
 func main() {
-	artists, err := handlers.FetchArtists()
-	if err != nil {
-		fmt.Println("Error fetching artists:", err)
-		return
-	}
+	//var err error
 
-	for _, artist := range artists {
-		fmt.Printf("ID: %d, Name: %s, Creation Year: %d, Members: %v\n", artist.ID, artist.Name, artist.CreationYear, artist.Members)
-	}
+	//webhandlers.Temp = template.Must(template.ParseGlob("templates/*html"))
+
+	fmt.Println("server running at http://localhost:8080/")
+
+	//http.HandleFunc("/", ArtistProfile)
+	http.HandleFunc("/artists", webhandlers.Artists)
+
+	http.ListenAndServe(":8080", nil)
 }
