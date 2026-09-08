@@ -3,17 +3,12 @@ package lookup
 import (
 	"fmt"
 	"groupie-tracker/apihandlers"
+	"groupie-tracker/models"
 )
 
-type ConcertInfo struct {
-	ID		int
-	Name	string
-	CreationYear	int
-	Members	[]string
-	DatesLocations	map[string][]string
-}
 
-func RelationLookup() ([]ConcertInfo, error) {
+
+func RelationLookup() ([]models.ConcertInfo, error) {
 	artists, err := handlers.FetchArtists()
 	if err != nil {
 		fmt.Println("Error fetching artists:", err)
@@ -26,17 +21,17 @@ func RelationLookup() ([]ConcertInfo, error) {
 		return nil, err
 	}
 
-	relationsByID := make(map[int]handlers.Relation, len(relations.Index))
+	relationsByID := make(map[int]models.Relation, len(relations.Index))
 	for _, relation := range relations.Index {
 		relationsByID[relation.ID] = relation
 	}
 
-	concerts := []ConcertInfo{}
+	concerts := []models.ConcertInfo{}
 	
 	for _, artist := range artists {
 		relation, ok := relationsByID[artist.ID]
 		if ok{
-			concert := ConcertInfo {
+			concert := models.ConcertInfo {
 				ID:				artist.ID,
 				Name:			artist.Name,
 				CreationYear:	artist.CreationYear,
