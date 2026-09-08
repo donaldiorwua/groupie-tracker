@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Groupie Tracker</title>
+</head>
+<body>
+    <h1>Groupie Tracker</h1>
+    <p>Welcome to the artists page!</p>
+    {{ range . }}
+    {{ .ID}} 
+    {{ .Name }}
+    {{ .CreationYear}}
+        {{ range .Members }}
+        
+        {{end}}
+    {{ end }}
+</body>
+</html>
