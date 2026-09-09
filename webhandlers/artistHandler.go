@@ -13,7 +13,7 @@ func Artists(web http.ResponseWriter, request *http.Request) {
 
 	if request.Method == http.MethodGet {
 		
-		artists, err := handlers.FetchArtists()
+		artists, err := apihandlers.FetchArtists()
 		if err != nil {
 			web.WriteHeader(http.StatusInternalServerError)
 			fmt.Fprint(web, err.Error())
