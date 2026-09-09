@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Artist Profile</title>
+</head>
+
+<body>
+    <h1>Groupie Tracker</h1>
+    <h3>Artist Profile</h3>
+    <p>Artists Name: {{ .Name }}</p>
+    <img src="{{ .Image }}" alt="{{ .Name }}">
+    <p>ID: {{ .ID}}</p>
+    <p>Creation Year: {{ .CreationYear}}</p>
+    <p>First Album Year: {{ .FirstAlbum}} </p>
+    <p> Members:</p>
+    <ul>
+        {{ range .Members }}
+        <li>{{ . }}</li>
+        {{end}}
+    </ul>
+</body>
+
+</html>
