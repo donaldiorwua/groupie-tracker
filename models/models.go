@@ -11,8 +11,10 @@ type ConcertInfo struct {
 
 type Artist struct {
 	ID           int      `json:"id"`
+	Image		 string	  `json:"image"`
 	Name         string   `json:"name"`
-	CreationYear int      `json:"creation_year"`
+	CreationYear int      `json:"creationDate"`
+	FirstAlbum	 string	  `json:"firstAlbum"`
 	Members      []string `json:"members"`
 }
 
