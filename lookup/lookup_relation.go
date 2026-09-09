@@ -9,13 +9,13 @@ import (
 
 
 func RelationLookup() ([]models.ConcertInfo, error) {
-	artists, err := handlers.FetchArtists()
+	artists, err := apihandlers.FetchArtists()
 	if err != nil {
 		fmt.Println("Error fetching artists:", err)
 		return nil, err
 	}  
 
-	relations, err := handlers.FetchRelations()
+	relations, err := apihandlers.FetchRelations()
 	if err != nil {
 		fmt.Println("Error fetching relations:", err)
 		return nil, err

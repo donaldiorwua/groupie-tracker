@@ -6,13 +6,13 @@ import (
 )
 
 func Location_Lookup() (error) {
-	locations, err := handlers.FetchLocations()
+	locations, err := apihandlers.FetchLocations()
 	if err != nil {
 		fmt.Println("Error fetching locations:", err)
 		return nil
 	}
 
-	artists, err := handlers.FetchArtists()
+	artists, err := apihandlers.FetchArtists()
 	if err != nil {
 		fmt.Println("Error fetching artists:", err)
 		return nil
