@@ -6,13 +6,21 @@
 <body>
     <h1>Groupie Tracker</h1>
     <p>Welcome to the artists page!</p>
+
     {{ range . }}
-    {{ .ID}} 
-    {{ .Name }}
-    {{ .CreationYear}}
+    <div>
+    <h2>Artists Name: <a href="/artist?id={{ .ID}}"> {{ .Name }}</a></h2>
+    <img src="{{ .Image }}" alt="{{ .Name }}">
+    <p>ID: {{ .ID}}</p>
+    <p>Creation Year: {{ .CreationYear}}</p>
+    <p>First Album Year: {{ .FirstAlbum}} </p>
+    <p> Members:</p>
+    <ul>
         {{ range .Members }}
-        
+        <li>{{ . }}</li>
         {{end}}
+    </ul>
+    </div>
     {{ end }}
 </body>
 </html>
