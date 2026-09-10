@@ -44,6 +44,39 @@ func ArtistProfile(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprint(w, "Artist not found")
 			return
 		}
+
+		relations, err := apihandlers.FetchRelations()
+		if err != nil {
+			fmt.Println("Error fetching relations:", err)
+			return
+		}
+
+		relationsByID := make(map[int]models.Relation, len(relations.Index))
+		for _, relation := range relations.Index {
+			relationsByID[relation.ID] = relation
+		}
+
+		var artistProfile models.ConcertInfo
+		relation, ok := relationsByID[selectedArtist.ID]
+		if ok {
+			artistInfo := models.ConcertInfo{
+				ID:             selectedArtist.ID,
+				Image:			selectedArtist.Image,
+				Name:           selectedArtist.Name,
+				CreationYear:   selectedArtist.CreationYear,
+				FirstAlbum: 	selectedArtist.FirstAlbum,
+				Members:        selectedArtist.Members,
+				DatesLocations: relation.DatesLocations,
+			}
+
+		artistProfile = artistInfo
+
+		} else {
+			w.WriteHeader(http.StatusNotFound)
+			fmt.Fprint(w, "No Artist information found")
+			return
+		}
+
 		Temp, err = template.ParseFiles("templates/artist.html")
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
@@ -51,7 +84,7 @@ func ArtistProfile(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		err = Temp.Execute(w, selectedArtist)
+		err = Temp.Execute(w, artistProfile)
 		if err != nil {
 			log.Println(err)
 			return
