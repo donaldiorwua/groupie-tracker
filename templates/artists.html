@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Groupie Tracker</title>
 </head>
+
 <body>
     <h1>Groupie Tracker</h1>
     <p>Welcome to the artists page!</p>
 
     {{ range . }}
     <div>
-    <h2>Artists Name: <a href="/artist?id={{ .ID}}"> {{ .Name }}</a></h2>
+        <h2>Artists Name: <a href="/artists?id={{ .ID}}"> {{ .Name }}</h2>
+    </div>
     <img src="{{ .Image }}" alt="{{ .Name }}">
     <p>ID: {{ .ID}}</p>
     <p>Creation Year: {{ .CreationYear}}</p>
     <p>First Album Year: {{ .FirstAlbum}} </p>
     <p> Members:</p>
-    <ul>
-        {{ range .Members }}
-        <li>{{ . }}</li>
-        {{end}}
-    </ul>
-    </div>
-    {{ end }}
+    <p>{{ range $location, $dates := .DatesLocations }}
+    <p>Location: {{ $location }}</p>
+    {{ end }}</p>
 </body>
+
 </html>

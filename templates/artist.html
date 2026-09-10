@@ -19,6 +19,27 @@
         <li>{{ . }}</li>
         {{end}}
     </ul>
+    <h2>Concert Locations</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Location</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{ range $location, $dates := .DatesLocations }}
+            {{ range $dates }}
+            <tr>
+                <td>{{ $location }}</td>
+                <td>{{ . }}</td>
+            </tr>
+            {{ end }}
+            {{ end }}
+        </tbody>
+    </table>
+
 </body>
 
 </html>
