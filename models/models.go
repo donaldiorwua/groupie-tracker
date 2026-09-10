@@ -3,8 +3,10 @@ package models
 
 type ConcertInfo struct {
 	ID		int
+	Image	string
 	Name	string
 	CreationYear	int
+	FirstAlbum	string
 	Members	[]string
 	DatesLocations	map[string][]string
 }
