@@ -3,6 +3,7 @@ package webhandlers
 import (
 	"fmt"
 	"groupie-tracker/apihandlers"
+	"groupie-tracker/lookup"
 	"html/template"
 	"log"
 	"net/http"
@@ -12,13 +13,17 @@ func Artists(web http.ResponseWriter, request *http.Request) {
 	var Temp *template.Template
 
 	if request.Method == http.MethodGet {
-		
+
 		artists, err := apihandlers.FetchArtists()
 		if err != nil {
 			web.WriteHeader(http.StatusInternalServerError)
 			fmt.Fprint(web, err.Error())
 			return
 		}
+
+		search := request.URL.Query().Get("search")
+
+		filteredArtists := lookup.SearchArtists(artists, search)
 
 		Temp, err = template.ParseFiles("templates/artists.html")
 		if err != nil {
@@ -27,7 +32,7 @@ func Artists(web http.ResponseWriter, request *http.Request) {
 			return
 		}
 
-		err = Temp.Execute(web, artists)
+		err = Temp.Execute(web, filteredArtists)
 		if err != nil {
 			log.Println(err)
 			return
