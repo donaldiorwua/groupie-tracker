@@ -4,11 +4,28 @@
 <head>
     <title>Groupie Tracker</title>
 </head>
+<style>
+    .search-container {
+        display: flex;
+        align-items: center;
+        max-width: 450px;
+        width: 100%;
+        margin: 20px auto;
+        font-family: Arial, sans-serif;
+    }
+</style>
 
 <body>
     <h1>Groupie Tracker</h1>
     <p>Welcome to the artists page!</p>
-
+    <form class="search-container" action="/artists" method="GET" role="search">
+        <input type="search" id="site-search" name="search" placeholder="Search everything..."
+            aria-label="Search through site content" autocomplete="off" />
+        <button type="submit">Search</button>
+    </form>
+    {{if eq (len .) 0}}
+        <p>No artists found</p>
+    {{ else}}
     {{ range . }}
     <div>
         <h2>Artists Name: <a href="/artist?id={{ .ID}}"> {{ .Name }}</a></h2>
@@ -24,6 +41,7 @@
         {{end}}
     </ul>
     {{ end }}
+    {{end}}
 </body>
 
 </html>
