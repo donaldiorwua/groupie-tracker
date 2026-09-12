@@ -10,7 +10,7 @@ func main() {
 
 	fmt.Println("server running at http://localhost:8080/")
 
-	//http.HandleFunc("/", ArtistProfile)
+	http.HandleFunc("/", webhandlers.IndexHandler)
 	http.HandleFunc("/artists", webhandlers.Artists)
 	http.HandleFunc("/artist", webhandlers.ArtistProfile)
 
