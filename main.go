@@ -1,18 +1,26 @@
 package main
 
 import (
-	"fmt"
 	"groupie-tracker/webhandlers"
+	"log"
 	"net/http"
+	"os"
 )
 
 func main() {
 
-	fmt.Println("server running at http://localhost:8080/")
-
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.HandleFunc("/", webhandlers.IndexHandler)
 	http.HandleFunc("/artists", webhandlers.Artists)
 	http.HandleFunc("/artist", webhandlers.ArtistProfile)
 
-	http.ListenAndServe(":8080", nil)
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		port = "8080"
+	}
+
+	log.Println("Server running on port", port)
+
+	http.ListenAndServe("0.0.0.0:"+port, nil)
 }
