@@ -22,6 +22,7 @@ func SearchArtists(artists []models.Artist, search string) []models.Artist {
 				strings.ToLower(artist.Name),
 				strings.ToLower(search)) {
 				filteredArtists = append(filteredArtists, artist)
+				continue
 			}
 			for _, member := range artist.Members {
 				if strings.Contains(
