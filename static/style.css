@@ -1,0 +1,272 @@
+/* =========================
+   General
+   ========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+h1,
+h2,
+h3 {
+    margin-top: 0;
+}
+
+a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   Navigation
+   ========================= */
+
+nav {
+    background: #111827;
+    padding: 18px 40px;
+}
+
+nav a {
+    color: white;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #93c5fd;
+}
+
+
+/* =========================
+   Main Container
+   ========================= */
+
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+
+/* =========================
+   Home Page
+   ========================= */
+
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: 15px auto;
+    line-height: 1.7;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: #2563eb;
+    color: white;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.button:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+
+
+/* =========================
+   Search
+   ========================= */
+
+.search-container {
+    display: flex;
+    max-width: 600px;
+    margin: 25px auto 40px;
+    gap: 10px;
+}
+
+.search-container input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.search-container button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.search-container button:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================
+   Artist Cards
+   ========================= */
+
+.artist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.artist-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.artist-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #f3f4f6;
+}
+
+.artist-card h2 {
+    margin-top: 15px;
+}
+
+.artist-card p {
+    margin: 8px 0;
+}
+
+.artist-card ul {
+    padding-left: 20px;
+}
+
+
+/* =========================
+   Artist Profile
+   ========================= */
+
+.profile {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.profile-image {
+    display: block;
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
+    border-radius: 10px;
+    background: #f3f4f6;
+    margin: 0 auto 20px;
+}
+
+.profile h1 {
+    text-align: center;
+}
+
+.profile-info {
+    line-height: 1.8;
+}
+
+
+/* =========================
+   Concert Table
+   ========================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    background: white;
+}
+
+th,
+td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #111827;
+    color: white;
+}
+
+tr:hover {
+    background: #f3f4f6;
+}
+
+
+/* =========================
+   Empty Results
+   ========================= */
+
+.no-results {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 10px;
+}
+
+
+/* =========================
+   Mobile
+   ========================= */
+
+@media (max-width: 600px) {
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .search-container {
+        flex-direction: column;
+    }
+
+    .search-container button {
+        width: 100%;
+    }
+
+    .profile {
+        padding: 20px;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
